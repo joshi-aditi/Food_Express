@@ -9,19 +9,19 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
   // console.log("header component rendered");//FOR EACH CLICK THE HEADER COMPONENT GETS RENDERED... this is reconsilation and this rerendering occurs very fast... it just checks what need to be change in the component and just quickly changes it and update the ui...
     return (
-      <div className="header">
-        <div className="logo">
+      <div className="flex justify-between">
+        <div className="w-44">
           <img src={LOGO_URL}></img>
         </div>
-        <div className="nav-items">
-          <ul>
-            <li>Online Status :{onlineStatus?" ✅":" 🛑"}</li>
-            <li> <Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/grocery">Grocery</Link></li>
-            <li>Cart</li>
-          <button className="login-btn" onClick={()=>{
+        <div className="flex">
+          <ul className="flex">
+            <li className="p-4 m-3 font-semibold">Online Status :{onlineStatus?" ✅":" 🛑"}</li>
+            <li className="p-4 m-3 font-semibold"> <Link to="/">Home</Link></li>
+            <li className="p-4 m-3 font-semibold"><Link to="/about">About Us</Link></li>
+            <li className="p-4 m-3 font-semibold"><Link to="/contact">Contact Us</Link></li>
+            <li className="p-4 m-3 font-semibold"><Link to="/grocery">Grocery</Link></li>
+            <li className="p-4 m-3 font-semibold">Cart</li>
+          <button className="bg-[#fe3442] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold" onClick={()=>{
             (btnName === "Login")?setbtnName("Logout"):setbtnName("Login");
           }}>{btnName}</button>
           </ul>

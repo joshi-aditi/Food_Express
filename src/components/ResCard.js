@@ -8,25 +8,21 @@ const ResCard = (props) => {
     const slaString = sla?.slaString;//sla property will get from above then again will destructure it to get the slaString...
     //THIS IS OPTIONAL CHAINING...
     return (
-      <div className="res-card">
+      <div className="w-60 bg-gray-100 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out h-auto my-3 mx-2 rounded-lg shadow-lg text-center flex flex-col justify-center items-center pb-3">
         <img
-          className="res-img"
+          className="h-52 w-56 rounded-lg mt-3"
           src={
             RESLOGO_URL +
             cloudinaryImageId
           }
         ></img>
-        <h3>{name}</h3>
+        <h3 className="font-bold">{name}</h3>
         {/* the props is js object so we use it here using {}... remember this. */}
-        <br></br>
         <h4>{cuisines.join(", ")}</h4>
-        <br></br>
         <h4>{costForTwo}</h4>
-        <br/>
-        <h4>{avgRating}⭐</h4>
-        <br></br>
+        <h4>{avgRating}⭐</h4>        
         <h4>{slaString}</h4>
-      </div>
+        </div>
     );
   };
 

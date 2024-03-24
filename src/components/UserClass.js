@@ -45,11 +45,13 @@ class UserClass extends React.Component{
                     count : this.state.count+1
                 })
             }}>Count Increase</button> */}
-            <h3>Name : {this.state.name}</h3>
+            <h3 className="text-center font-semibold">Name : {this.state.name}</h3>
             <br/>
-            <h4>Id : {this.state.id}</h4>
+            <h4 className="text-center font-semibold">Id : {this.state.id}</h4>
             <br/>
-            <img src={this.state.avatar_url}></img>
+            <div className="flex justify-center">
+            <img src={this.state.avatar_url} className="h-36" alt="Avatar" />
+            </div>
         </div>);
     }
 }

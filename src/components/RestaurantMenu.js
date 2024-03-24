@@ -49,19 +49,19 @@ const RestaurantMenu = () => {
   const filteredItems = showVeg ? itemCards.filter(item => item.card.info.isVeg === 1) : itemCards;
 
     return (
-      <div className="menu">
-        <h1>{name}</h1>
-        <br />
-        <h3>{cuisines.join(", ")} - {costForTwoMessage}</h3>
-        <br/>
-        <div className="menu-in">
-        <h4>✔ Menu ✔</h4>
-        <button onClick={toggleVeg} className="toggle-veg">
+      <div className="">
+        <hr></hr>
+        <h1 className="font-bold text-2xl text-center">{name}</h1>
+        <h3 className="font-semibold text-lg text-center">{cuisines.join(", ")} - {costForTwoMessage}</h3>
+        <hr></hr>
+        <div className="flex">
+        <h4 className="p-3 text-2xl">✔ Menu ✔</h4>
+        <button onClick={toggleVeg} className="bg-green-500 px-3 h-8 rounded-md mt-4 mr-2 text-white font-semibold">
         {showVeg ? "Show All" : "Show Veg Only"}
         {/* showveg normally false hoga isley phle likha hai show all. */}
         </button>
         </div>
-          <ul>
+          <ul className="ml-3 text-sm">
             {
               filteredItems.map((item)=>
               <li key={item.card.info.name}> 

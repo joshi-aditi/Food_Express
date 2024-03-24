@@ -105,11 +105,12 @@ const Body = () => {
     <Shimmar />
   ) : (
     <div className="res-container">
-      <div className="filter">
+      <div className="flex justify-between">
+      
         <div className="search-div">
           <input
             type="text"
-            className="search-box"
+            className="p-2 border border-b-lime-200 w-[900px] m-3 ml-8"
             value={searchText}
             placeholder="Search Name of Restaurant"
             onChange={(e) => {
@@ -117,7 +118,7 @@ const Body = () => {
             }}
           ></input>
           <button
-            className="search-div-btn"
+            className="bg-[#fe3442] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold"
             onClick={() => {
               {
                 /* when click on this button res should get filtered. */
@@ -141,9 +142,8 @@ const Body = () => {
             Search
           </button>
         </div>
-
         <button
-          className="filter-btn"
+          className="bg-[#fe3442] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold"
           onClick={() => {
             //filter logic :
             // listOfRestaurantsJS = listOfRestaurantsJS.filter(
@@ -161,7 +161,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="res-cont">
+      <div className="flex m-4 flex-wrap justify-between">
         {/* <ResCard resName = "Chinese Wok" cuisine="Chinese, Asian, Tibetan, Desserts" ratings = "4.3 ⭐" delTime ="40-45 mins"/>  */}
         {/* above are props they gets passed in as js object only. */}
         {/* <ResCard resName = "Thambbi" cuisine="South Indian, Punjabi, Snacks, Thalis" ratings = "4.5 ⭐" delTime ="20-25 mins"/> */}
