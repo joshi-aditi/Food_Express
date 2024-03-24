@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "This is Namaste React",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -17,10 +19,12 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "parcel-bundler": "^1.12.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 Chrome version",
     "last 2 Firefox version"
   ]

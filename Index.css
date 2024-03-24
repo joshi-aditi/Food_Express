@@ -1,3 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Basis Grotesque Pro Bold", sans-serif;
+}
 #heading{
     color:red;
 }
+
+.header{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo >img{
+    width: 150px;
+    height: 80px;
+    cursor:pointer;
+}
+
+.nav-items{
+    margin-top: 15px;
+    margin-right: 13px;
+}
+
+.nav-items > ul{
+    display: flex;
+    list-style: none;
+}
+
+.nav-items > ul>li{
+    margin: 6px;
+    padding: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    
+}
+
+.nav-items ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: black; /* Set text color to black */
+  }
+
+.search{
+    padding: 2px;
+    margin: 10px;
+    font-size: 0.8 rem;
+}
+.res-container{
+    padding: 9px;
+
+}
+.res-card {
+    width: 200px;
+    height: auto; /* Allow height to adjust based on content */
+    padding: 10px; /* Increase padding for better spacing */
+    margin: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px; /* Add border-radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box-shadow for depth */
+    transition: transform 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.res-cont a{
+    color: black;
+    text-decoration: none;
+}
+
+.res-card:hover {
+    transform: translateY(-10px); /* Move card slightly upwards on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow intensity on hover */
+    cursor: pointer;
+}
+
+
+.res-cont{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.9rem;
+    justify-content: center;
+}
+
+.res-img {
+    width: 100%;
+    height: 200px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.filter-btn{
+    padding: 15px; /* Increased padding for a larger button */
+    margin: 10px 5px; /* Increased margin for better spacing */
+    font-size: 1rem; /* Increased font size for better readability */
+    background-color: #fe3442;
+    border: 2px solid #fe3442; /* Matching border color to button color */
+    border-radius: 10px; /* Increased border radius for rounded corners */
+    color: white;
+    font-weight: bold;
+    cursor: pointer; /* Added pointer cursor for better UX */
+}
+
+/* Container Styles */
+.shimmar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    padding: 16px; /* Add padding to the container */
+}
+
+/* Card Styles */
+.shimmar-card {
+    flex: 0 1 calc(33.33% - 8px); /* Adjust card width based on container width */
+    max-width: 200px; /* Set maximum width for cards */
+    height: 300px; /* Set a fixed height for cards */
+    margin-bottom: 16px; /* Add margin between cards */
+    border-radius: 8px; /* Add rounded corners */
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.login-btn{
+    padding: 9px; /* Increased padding for a larger button */
+    margin: 7px 5px; /* Increased margin for better spacing */
+    font-size: 1rem; /* Increased font size for better readability */
+    background-color: #fe3442;
+    border: 2px solid #fe3442; /* Matching border color to button color */
+    border-radius: 10px; /* Increased border radius for rounded corners */
+    color: white;
+    font-weight: bold;
+    cursor: pointer; /* Added pointer cursor for better UX */
+}
+
+.filter{
+    display: flex;
+    justify-content: space-between;
+}
+.search-box {
+    padding: 15px; /* Increased padding for a larger search bar */
+    margin: 0px 4px;
+    width: 800px; /* Increased width for a longer input field */
+    font-size: 1rem; /* Increased font size for better readability */
+    border: 2px solid #ccc; /* Added border for better visibility */
+    border-radius: 10px; /* Increased border radius for rounded corners */
+    outline: none; /* Removed default focus outline */
+}
+
+.search-div-btn {
+    padding: 15px; /* Increased padding for a larger button */
+    margin: 10px 5px; /* Increased margin for better spacing */
+    font-size: 1rem; /* Increased font size for better readability */
+    background-color: #fe3442;
+    border: 2px solid #fe3442; /* Matching border color to button color */
+    border-radius: 10px; /* Increased border radius for rounded corners */
+    color: white;
+    font-weight: bold;
+    cursor: pointer; /* Added pointer cursor for better UX */
+}
+
+/* Hover effect for the button */
+.search-div-btn:hover {
+    background-color: #ff4f6d; /* Darken background color on hover */
+}
+
+.filter-btn:hover{
+    background-color: #ff4f6d; /* Darken background color on hover */
+}
+
+.login-btn:hover{
+    background-color: #ff4f6d; /* Darken background color on hover */
+}
+
+.menu{
+    margin: 10px;
+    padding: 10px;
+}
+.menu ul{
+    padding: 10px;
+}
+.menu >ul> li{
+    list-style-type: none;
+}
+
+.menu-in{
+    display: flex;
+    gap: 1rem;
+    font-size: 1.3rem;
+}
+
+.toggle-veg {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    border-radius: 7px;
+    padding: 8px;
+    font-weight: bold;
+    color: white; /* White text color */
+    text-align: center; /* Center the text */
+    font-size: 0.9rem; /* Set font size */
+    cursor: pointer; /* Add pointer cursor on hover */
+  }
+  
+  /* Style the button on hover */
+  .toggle-veg:hover {
+    background-color: #45a049;
+  }
+
+  .about{
+    margin: 5px;
+  }
+
+  .user-card{
+    padding: 6px;
+    border: 1px solid black;
+    margin-top: 5px;
+  }
+  
