@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import ResCard from "./ResCard";
+import ResCard, { withPromotedLabel } from "./ResCard";
 // import resList from "../utils/mockData";
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
 import useListOfRestaurants from "../utils/useListOfRestaurants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 // import Shimmar from "./Shimmar";
 
 const Body = () => {
+
+  const resCardPromoted = withPromotedLabel(ResCard);//AND THEN USE THIS IN THE RESCARD SHOWING PART..... AT LINE 176
   //below lorJS is normal js var if that we update also then too our UI will not changed... to sync our ui with data we need statevariable which we get using hooks....
   let listOfRestaurantsJS = [
     {
@@ -73,6 +77,7 @@ const Body = () => {
   // const [listOfRestCopy, setListOfRestCopy] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const{loggedInUser, setUserName} = useContext(UserContext);
   // useEffect(()=>{
   //     fetchData();
   // },[]);
@@ -90,7 +95,7 @@ const Body = () => {
   //     return <Shimmar/>;
   // }
 
-  console.log("Body rendered"); //THE BODY GETS RENDERED FIRST AND THEN THE USEEFFECT WILL BE CALLED...
+  // console.log("Body rendered", listOfRestaurants); //THE BODY GETS RENDERED FIRST AND THEN THE USEEFFECT WILL BE CALLED...
 
   const onilineStatus = useOnlineStatus();
 
@@ -110,7 +115,7 @@ const Body = () => {
         <div className="search-div">
           <input
             type="text"
-            className="p-2 border border-b-lime-200 w-[900px] m-3 ml-8"
+            className="p-2 border border-b-lime-200 w-[700px] m-3 ml-8"
             value={searchText}
             placeholder="Search Name of Restaurant"
             onChange={(e) => {
@@ -159,6 +164,7 @@ const Body = () => {
         >
           Get Top Rated Restaurants
         </button>
+        <input className="border border-black px-2" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}></input>
       </div>
 
       <div className="flex m-4 flex-wrap justify-between">
