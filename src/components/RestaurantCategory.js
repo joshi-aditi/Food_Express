@@ -12,7 +12,7 @@ const RestaurantCategory = ({ data , showItem,setShowIndex}) => {
       {/*Header*/}
       <br></br>
       <div
-        className={`text-center bg-white w-6/12 m-auto p-4 border-[#f1f1f6] border-b-[12px] flex justify-between cursor-pointer ${
+        className={`text-center bg-white w-8/12 m-auto p-4 border-[#f1f1f6] border-b-[12px] flex justify-between cursor-pointer ${
           showItem ? "border-none" : "border-[#f1f1f6] border-b-[12px]"
         }`}
         onClick={handleClick}

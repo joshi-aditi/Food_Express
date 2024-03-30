@@ -4,12 +4,15 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   // let btnName = "Login"; //USING NORMAL VARIABLE : btn will get updated but it won't be render because we requries like referesh type of to render the newvalue but it cannot be done. 
   const[btnName, setbtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext);
+  const cartItems = useSelector((store)=>store.cart.items);
+  console.log(cartItems);
   // console.log("header component rendered");//FOR EACH CLICK THE HEADER COMPONENT GETS RENDERED... this is reconsilation and this rerendering occurs very fast... it just checks what need to be change in the component and just quickly changes it and update the ui...
     return (
       <div className="flex justify-between">
@@ -23,7 +26,7 @@ const Header = () => {
             <li className="p-4 m-3 font-semibold"><Link to="/about">About Us</Link></li>
             <li className="p-4 m-3 font-semibold"><Link to="/contact">Contact Us</Link></li>
             <li className="p-4 m-3 font-semibold"><Link to="/grocery">Grocery</Link></li>
-            <li className="p-4 m-3 font-semibold">Cart</li>
+            <li className="p-4 m-3 font-semibold cursor-pointer"><Link to="/cart">Cart - ({cartItems.length} Items)</Link></li>
           <button className="bg-[#fe3442] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold" onClick={()=>{
             (btnName === "Login")?setbtnName("Logout"):setbtnName("Login");
           }}>{btnName}</button>

@@ -11,6 +11,9 @@ import {createBrowserRouter, RouterProvider , Outlet} from "react-router-dom";
 import Shimmar from "./components/Shimmar";
 import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
+import { Provider } from "react-redux";
+import appStore from "./utils/AppStore";
+import Cart from "./components/Cart";
 
 const AppLayout = () => {
   const [userName,setUserName] = useState();
@@ -21,12 +24,14 @@ const AppLayout = () => {
   },[]);
 
   return (
+    <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
     <div className="app">
       <Header/>
       <Outlet/>
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -57,6 +62,11 @@ const appRouter = createBrowserRouter( [
       {
         path:"restaurants/:resId",//THIS IS DYNAMIC ROUTING...
         element:<RestaurantMenu/>
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
+
       }
     ],
     errorElement:<Error/>
