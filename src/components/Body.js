@@ -3,10 +3,12 @@ import ResCard, { withPromotedLabel } from "./ResCard";
 // import resList from "../utils/mockData";
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
-import useListOfRestaurants from "../utils/useListOfRestaurants";
+// import useListOfRestaurants from "../utils/useListOfRestaurants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { RES_URL } from "../utils/constants";
+import Offline from "./Offline";
 // import Shimmar from "./Shimmar";
 
 const Body = () => {
@@ -70,26 +72,25 @@ const Body = () => {
   //         },
   //       }
   //   ]);
-  const { listOfRestaurants, listOfRestCopy, updateListOfRestCopy } =
-    useListOfRestaurants();
-  // const [listOfRestaurants,setListOfRestaurants] = useState([]);//NOW WHEN USING API WE DON'T NEED THAT MOCK DATA...
+  // const { listOfRestaurants, listOfRestCopy, updateListOfRestCopy } = useListOfRestaurants();
+  const [listOfRestaurants,setListOfRestaurants] = useState([]);//NOW WHEN USING API WE DON'T NEED THAT MOCK DATA...
   //[resList] we didn't wrote bcz it takes array as default and that resList is array itself again writing [] will give u error...
-  // const [listOfRestCopy, setListOfRestCopy] = useState([]);
+  const [listOfRestCopy, setListOfRestCopy] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const{loggedInUser, setUserName} = useContext(UserContext);
-  // useEffect(()=>{
-  //     fetchData();
-  // },[]);
+  useEffect(()=>{
+      fetchData();
+  },[]);
   // //cors link : https://corsproxy.org/?
-  // const fetchData = async ()=>{
-  //     const data = await fetch(RES_URL);
+  const fetchData = async ()=>{
+      const data = await fetch(RES_URL);
 
-  //     const json = await data.json();
+      const json = await data.json();
 
-  //     setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  //     setListOfRestCopy(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  // };
+      setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setListOfRestCopy(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  };
 
   // if(listOfRestaurants.length === 0){
   //     return <Shimmar/>;
@@ -101,21 +102,18 @@ const Body = () => {
 
   if (onilineStatus === false)
     return (
-      <h1>
-        It seems like you are offline! Please Check your Internet Connection.
-      </h1>
+     <Offline/>
     );
 
-  return listOfRestCopy.length === 0 ? (
-    <Shimmar />
-  ) : (
-    <div className="res-container">
+  return(
+    <div className="res-container -mt-9">
       <div className="flex justify-between">
       
         <div className="search-div">
           <input
             type="text"
-            className="p-2 border border-b-lime-200 w-[700px] m-3 ml-8"
+            data-testid = "search-input"
+            className="p-2 border border-b-lime-200 w-[880px] m-3 ml-8"
             value={searchText}
             placeholder="Search Name of Restaurant"
             onChange={(e) => {
@@ -123,12 +121,12 @@ const Body = () => {
             }}
           ></input>
           <button
-            className="bg-[#fe3442] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold"
+            className="bg-[#ee3137] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold"
             onClick={() => {
               {
                 /* when click on this button res should get filtered. */
               }
-              // and we should get the res based on searchText.
+              // and we should get the res basusered on searchText.
               // console.log(searchText);
               const filterRes = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -139,8 +137,8 @@ const Body = () => {
                 // You can set another state to display a message in your UI indicating no results found.
               } else {
                 // Update the list of restaurants only if there are results
-                // setListOfRestCopy(filterRes);
-                updateListOfRestCopy(filterRes);
+                setListOfRestCopy(filterRes);
+                // updateListOfRestCopy(filterRes);
               }
             }}
           >
@@ -148,7 +146,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="bg-[#fe3442] px-5 h-12 rounded-md mt-4 mr-2 text-white font-semibold"
+          className="bg-[#ee3137] px-10 h-12 rounded-md mt-4 mr-4 text-white font-semibold"
           onClick={() => {
             //filter logic :
             // listOfRestaurantsJS = listOfRestaurantsJS.filter(
@@ -158,21 +156,21 @@ const Body = () => {
             const filterRestau = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.4
             );
-            // setListOfRestCopy(filterRestau);
-            updateListOfRestCopy(filterRestau);
+            setListOfRestCopy(filterRestau);
+            // updateListOfRestCopy(filterRestau);
           }}
         >
           Get Top Rated Restaurants
         </button>
-        <input className="border border-black px-2" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}></input>
+        {/* <input className="border border-black px-2" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}></input> */}
       </div>
 
       <div className="flex m-4 flex-wrap justify-between">
         {/* <ResCard resName = "Chinese Wok" cuisine="Chinese, Asian, Tibetan, Desserts" ratings = "4.3 ⭐" delTime ="40-45 mins"/>  */}
         {/* above are props they gets passed in as js object only. */}
         {/* <ResCard resName = "Thambbi" cuisine="South Indian, Punjabi, Snacks, Thalis" ratings = "4.5 ⭐" delTime ="20-25 mins"/> */}
-
-        {listOfRestCopy.map((resturants) => (
+          {/* {console.log(listOfRestCopy)} */}
+          {listOfRestCopy.map((resturants) => (
           <Link
             to={"restaurants/" + resturants.info.id}
             key={resturants.info.id}

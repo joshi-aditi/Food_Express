@@ -8,7 +8,7 @@ const RestaurantCategory = ({ data , showItem,setShowIndex}) => {
     setShowIndex();
   };
   return (
-    <div className="text-center">
+    <div className="text-center"  data-testid = "item-category">
       {/*Header*/}
       <br></br>
       <div
@@ -17,7 +17,7 @@ const RestaurantCategory = ({ data , showItem,setShowIndex}) => {
         }`}
         onClick={handleClick}
       >
-        <span className="font-bold text-base text-[#3e4152]">
+        <span className="font-bold text-base text-[#02060CEB]">
           {data.card.card.title} ({data.card.card.itemCards.length})
         </span>
         <span className="">⌵</span>

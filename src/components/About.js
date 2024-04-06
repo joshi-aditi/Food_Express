@@ -3,7 +3,7 @@ import UserClass from './UserClass';
 
 const About = ()=>{
     return(
-        <div className="m-2">
+        <div className="m-2 -mt-5">
             <hr></hr>
             <h1 className='text-center font-bold text-xl p-2'>About Us</h1>
             <h2 className='text-center text-md p-2'>This is about us....</h2>

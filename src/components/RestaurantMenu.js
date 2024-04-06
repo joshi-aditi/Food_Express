@@ -57,16 +57,18 @@ const RestaurantMenu = () => {
   console.log(categories);
 
     return (
-      <div className="">
+      <div className="-mt-7">
         <hr></hr>
         <div className="sticky top-0 bg-white z-10">
-        <h1 className="font-bold text-2xl text-center text-[#3d4152]">{name}</h1>
+        <h1 className="font-bold text-2xl text-center text-[#02060CEB]">{name}</h1>
         <h3 className="font-semibold text-lg text-center text-[#3e4152]">{cuisines.join(", ")} - {costForTwoMessage}</h3>
         <hr></hr>
         </div>
+        <div>
         {categories.map((category , index)=><RestaurantCategory key={category.card.card.title} data = {category} showItem={index==showIndex && true}
         setShowIndex= {()=>setShowIndex(index)}
         /> )}
+        </div>
 
       </div>
     );

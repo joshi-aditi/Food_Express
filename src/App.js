@@ -26,7 +26,7 @@ const AppLayout = () => {
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-    <div className="app">
+    <div className="m-0 p-0" style={{background:"", margin: "0px"}}>
       <Header/>
       <Outlet/>
     </div>
@@ -36,7 +36,7 @@ const AppLayout = () => {
 };
 
 const Grocery = lazy(()=>import("./components/Grocery"));//JUST USING THIS WILL GIVE ERROR WHY BCZ : that js takes time to load but react is too fast it just loads that component but that component code is still not present soo we get error... TO REMOVE THIS ERROR WE NEED TO WRAP OUR COMP INSIDE SUSPENSE.... AND ALSO PASS FALLBACK/PLACEHOLDER...
-const AboutClass = lazy(()=>import("./components/AboutClass"));
+const About = lazy(()=>import("./components/About"));
 //cbr takes a list of paths and path is a object...
 const appRouter = createBrowserRouter( [
   {
@@ -49,7 +49,7 @@ const appRouter = createBrowserRouter( [
       },
       {
         path:"/about",
-        element:<Suspense fallback={<Shimmar/>}><AboutClass/></Suspense>
+        element:<Suspense fallback={<Shimmar/>}><About/></Suspense>
       },
       {
         path:"/contact",
