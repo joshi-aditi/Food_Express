@@ -154,7 +154,7 @@ const Body = () => {
             // );
 
             const filterRestau = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.4
+              (res) => (res.info.avgRating > 4.4)
             );
             setListOfRestCopy(filterRestau);
             // updateListOfRestCopy(filterRestau);

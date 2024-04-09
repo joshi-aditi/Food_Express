@@ -12,7 +12,7 @@ import Shimmar from "./components/Shimmar";
 import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 import { Provider } from "react-redux";
-import appStore from "./utils/AppStore";
+import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 
 const AppLayout = () => {
