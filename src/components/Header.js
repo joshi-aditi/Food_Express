@@ -17,7 +17,7 @@ const Header = () => {
     return (
       <div className="flex justify-between">
         <div className="w-44">
-          <img src={LOGO_URL} className="w-36 -mt-5 ml-3"></img>
+          <Link to="/"><img src={LOGO_URL} className="w-36 -mt-5 ml-3 cursor-pointer"></img></Link>
         </div>
         <div className="flex">
           <ul className="flex">
