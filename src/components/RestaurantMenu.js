@@ -6,6 +6,7 @@ import Shimmar from "./Shimmar";
 import useRestMenu from "../utils/useRestMenu";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurantCategory from "./RestaurantCategory";
+import ShimmarMenu from "./ShimmarMenu";
 const RestaurantMenu = () => {
 
   const {resId} = useParams();
@@ -13,7 +14,7 @@ const RestaurantMenu = () => {
   // console.log(MENU_URL+resId)
   // const [resInfo,setResInfo] = useState(null);
   const [showVeg, setShowVeg] = useState(false);
-  const [showIndex,setShowIndex] = useState(0);
+  const [showIndex,setShowIndex] = useState(null);
 
   const resInfo = useRestMenu(resId); //THIS IS OUR CUSTOM HOOK.....
   // const fetchMenu = async()=>{
@@ -31,7 +32,7 @@ const RestaurantMenu = () => {
       <Offline/>
     );
 // {console.log(resInfo);}
-  if(resInfo===null) return <Shimmar/>;
+  if(resInfo===null) return <ShimmarMenu/>;
 
   const {name,cuisines,costForTwoMessage} = resInfo?.data?.cards[2]?.card?.card?.info;
 
