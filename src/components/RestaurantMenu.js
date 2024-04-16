@@ -1,5 +1,6 @@
 import {useState} from "react";
 import { useParams } from "react-router-dom";
+import Offline from "./Offline";
 // import { MENU_URL } from "../utils/constants";
 import Shimmar from "./Shimmar";
 import useRestMenu from "../utils/useRestMenu";
@@ -12,9 +13,9 @@ const RestaurantMenu = () => {
   // console.log(MENU_URL+resId)
   // const [resInfo,setResInfo] = useState(null);
   const [showVeg, setShowVeg] = useState(false);
-  const [showIndex,setShowIndex] = useState(null);
+  const [showIndex,setShowIndex] = useState(0);
 
-  const resInfo = useRestMenu(resId); //THIS IS OUR CUSTOME HOOK.....
+  const resInfo = useRestMenu(resId); //THIS IS OUR CUSTOM HOOK.....
   // const fetchMenu = async()=>{
   //   const data = await fetch(MENU_URL+resId);
   //   const json = await data.json();
@@ -27,11 +28,9 @@ const RestaurantMenu = () => {
 
   if (onilineStatus === false)
     return (
-      <h1>
-        It seems like you are offline! Please Check your Internet Connection.
-      </h1>
+      <Offline/>
     );
-{console.log(resInfo);}
+// {console.log(resInfo);}
   if(resInfo===null) return <Shimmar/>;
 
   const {name,cuisines,costForTwoMessage} = resInfo?.data?.cards[2]?.card?.card?.info;

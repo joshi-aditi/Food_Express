@@ -2,7 +2,7 @@
 import ItemList from "./ItemList";
 const RestaurantCategory = ({ data , showItem,setShowIndex}) => {
   // console.log(data);
-//   const [showItem, setShowItem] = useState(false);
+//   const [showItem, setShowItem] = useState(false); // ITEMLIST WERE HANDLING THERE OWN STATE BUT WE DON'T WANT THAT....
   const handleClick = () => {
     // setShowItem(!showItem);
     setShowIndex();

@@ -1,12 +1,13 @@
 {
   "name": "namaste-react",
   "version": "1.0.0",
+  "proxy":"https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0748&lng=72.8856&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
   "description": "This is Namaste React",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest",
-    "watch-test":"jest --watch"
+    "watch-test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -21,16 +22,25 @@
     "@babel/preset-react": "^7.24.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
+    "assert": "^2.1.0",
     "babel-jest": "^29.7.0",
+    "buffer": "^6.0.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "parcel": "^2.11.0",
+    "path-browserify": "^1.0.1",
     "postcss": "^8.4.38",
     "process": "^0.11.10",
-    "tailwindcss": "^3.4.1"
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.4.1",
+    "util": "^0.12.5"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "parcel-bundler": "^1.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

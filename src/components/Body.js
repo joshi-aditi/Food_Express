@@ -3,7 +3,7 @@ import ResCard, { withPromotedLabel } from "./ResCard";
 // import resList from "../utils/mockData";
 import Shimmar from "./Shimmar";
 import { Link } from "react-router-dom";
-// import useListOfRestaurants from "../utils/useListOfRestaurants";
+import useListOfRestaurants from "../utils/useListOfRestaurants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
@@ -15,34 +15,34 @@ const Body = () => {
 
   const resCardPromoted = withPromotedLabel(ResCard);//AND THEN USE THIS IN THE RESCARD SHOWING PART..... AT LINE 176
   //below lorJS is normal js var if that we update also then too our UI will not changed... to sync our ui with data we need statevariable which we get using hooks....
-  let listOfRestaurantsJS = [
-    {
-      info: {
-        id: "11239",
-        name: "Thambbi",
-        cloudinaryImageId: "t6av3q7weumzdozcmowp",
-        costForTwo: "₹400 for two",
-        cuisines: ["South Indian", "Punjabi", "Snacks", "Thalis"],
-        avgRating: 4.5,
-        sla: {
-          slaString: "20-25 mins",
-        },
-      },
-    },
-    {
-      info: {
-        id: "202836",
-        name: "Hangout Cakes & More",
-        cloudinaryImageId: "86cbacfd10d2f7e6186438a963b245be",
-        costForTwo: "₹150 for two",
-        cuisines: ["Bakery"],
-        avgRating: 4.4,
-        sla: {
-          slaString: "20-25 mins",
-        },
-      },
-    },
-  ];
+  // let listOfRestaurantsJS = [
+  //   {
+  //     info: {
+  //       id: "11239",
+  //       name: "Thambbi",
+  //       cloudinaryImageId: "t6av3q7weumzdozcmowp",
+  //       costForTwo: "₹400 for two",
+  //       cuisines: ["South Indian", "Punjabi", "Snacks", "Thalis"],
+  //       avgRating: 4.5,
+  //       sla: {
+  //         slaString: "20-25 mins",
+  //       },
+  //     },
+  //   },
+  //   {
+  //     info: {
+  //       id: "202836",
+  //       name: "Hangout Cakes & More",
+  //       cloudinaryImageId: "86cbacfd10d2f7e6186438a963b245be",
+  //       costForTwo: "₹150 for two",
+  //       cuisines: ["Bakery"],
+  //       avgRating: 4.4,
+  //       sla: {
+  //         slaString: "20-25 mins",
+  //       },
+  //     },
+  //   },
+  // ];
 
   //   let [listOfRestaurants,setListOfRestaurants] = useState([
   //     {
@@ -72,27 +72,26 @@ const Body = () => {
   //         },
   //       }
   //   ]);
-  // const { listOfRestaurants, listOfRestCopy, updateListOfRestCopy } = useListOfRestaurants();
-  const [listOfRestaurants,setListOfRestaurants] = useState([]);//NOW WHEN USING API WE DON'T NEED THAT MOCK DATA...
+  const { listOfRestaurants, listOfRestCopy, updateListOfRestCopy } = useListOfRestaurants();
+  // const [listOfRestaurants,setListOfRestaurants] = useState([]);//NOW WHEN USING API WE DON'T NEED THAT MOCK DATA...
   //[resList] we didn't wrote bcz it takes array as default and that resList is array itself again writing [] will give u error...
-  const [listOfRestCopy, setListOfRestCopy] = useState([]);
+  // const [listOfRestCopy, setListOfRestCopy] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const{loggedInUser, setUserName} = useContext(UserContext);
-  useEffect(()=>{
-      fetchData();
-  },[]);
-  // //cors link : https://corsproxy.org/?
-  const fetchData = async ()=>{
-      const data = await fetch(RES_URL);
+  // useEffect(()=>{
+  //     fetchData();
+  // },[]);
+  // const fetchData = async ()=>{
+  //     const data = await fetch(RES_URL);
 
-      const json = await data.json();
+  //     const json = await data.json();
 
-      setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-      setListOfRestCopy(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  };
-
-  // if(listOfRestaurants.length === 0){
+  //     // setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  //     // setListOfRestCopy(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  // };
+console.log(listOfRestCopy.length);
+  // if(listOfRestCopy.length == 0){
   //     return <Shimmar/>;
   // }
 
@@ -105,7 +104,7 @@ const Body = () => {
      <Offline/>
     );
 
-  return(
+  return listOfRestCopy.length === 0? <Shimmar/> : (
     <div className="res-container -mt-9">
       <div className="flex justify-between">
       
@@ -137,8 +136,8 @@ const Body = () => {
                 // You can set another state to display a message in your UI indicating no results found.
               } else {
                 // Update the list of restaurants only if there are results
-                setListOfRestCopy(filterRes);
-                // updateListOfRestCopy(filterRes);
+                // setListOfRestCopy(filterRes);
+                updateListOfRestCopy(filterRes);
               }
             }}
           >
@@ -156,8 +155,8 @@ const Body = () => {
             const filterRestau = listOfRestaurants.filter(
               (res) => (res.info.avgRating > 4.4)
             );
-            setListOfRestCopy(filterRestau);
-            // updateListOfRestCopy(filterRestau);
+            // setListOfRestCopy(filterRestau);
+            updateListOfRestCopy(filterRestau);
           }}
         >
           Get Top Rated Restaurants

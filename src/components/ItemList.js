@@ -13,10 +13,10 @@ const ItemList = (items) => {
         {
             items.items.map((item) => (
                 <div key={item?.card?.info?.id} className="flex r m-auto w-8/12 border-gray-200 border-b-2 pl-4 pt-2 pb-8" data-testid = "items">
-                    <div className="text-sm w-9/12 text-left">
+                    <div className="text-sm w-9/12 text-left cursor-pointer">
                         <p className="text-[#02060CBF] font-bold text-base">{item?.card?.info?.name}</p>
                         <p className="text-[#3e4152] font-semibold text-sm">₹{(item?.card?.info?.price)?(item?.card?.info?.price/100):(item?.card?.info?.defaultPrice/100)}</p>
-                        <p className="text-[#282c3f73] text-sm pt-3">{item?.card?.info?.description}</p>
+                        <p className="text-[#02060C99] text-sm pt-3">{item?.card?.info?.description}</p>
                     </div>
                     <div className="w-3/12">
                         <img src={RESLOGO_URL+item?.card?.info?.imageId} className="rounded-lg bg-[#282c3f0d]"></img>
