@@ -1,7 +1,7 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import { useParams } from "react-router-dom";
 import Offline from "./Offline";
-// import { MENU_URL } from "../utils/constants";
+import { MENU_URL } from "../utils/constants";
 import Shimmar from "./Shimmar";
 import useRestMenu from "../utils/useRestMenu";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -12,19 +12,19 @@ const RestaurantMenu = () => {
   const {resId} = useParams();
   // console.log(params);
   // console.log(MENU_URL+resId)
-  // const [resInfo,setResInfo] = useState(null);
+  const [resInfo,setResInfo] = useState(null);
   const [showVeg, setShowVeg] = useState(false);
   const [showIndex,setShowIndex] = useState(null);
 
-  const resInfo = useRestMenu(resId); //THIS IS OUR CUSTOM HOOK.....
-  // const fetchMenu = async()=>{
-  //   const data = await fetch(MENU_URL+resId);
-  //   const json = await data.json();
-  //   setResInfo(json);
-  // }
-  // useEffect(()=>{
-  //   fetchMenu();
-  // },[]);
+  // const resInfo = useRestMenu(resId); //THIS IS OUR CUSTOM HOOK.....
+  const fetchMenu = async()=>{
+    const data = await fetch(MENU_URL+resId);
+    const json = await data.json();
+    setResInfo(json);
+  }
+  useEffect(()=>{
+    fetchMenu();
+  },[]);
   const onilineStatus = useOnlineStatus();
 
   if (onilineStatus === false)
@@ -54,11 +54,11 @@ const RestaurantMenu = () => {
   //FULL RES MENU...
   const categories = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
     c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-  console.log(categories);
+  // console.log(categories);
 
     return (
-      <div className="-mt-7">
-        <hr></hr>
+      <div className="-mt-7 z-[20]">
+        <hr className="z-[20]"></hr>
         <div className="sticky top-0 bg-white z-10">
         <h1 className="font-bold text-2xl text-center text-[#02060CEB]">{name}</h1>
         <h3 className="font-semibold text-lg text-center text-[#3e4152]">{cuisines.join(", ")} - {costForTwoMessage}</h3>

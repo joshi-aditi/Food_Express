@@ -12,7 +12,7 @@ const Cartitems = (items) => {
        <div>
         {
             items.items.map((item) => (
-                <div key={item?.card?.info?.id} className="flex r m-auto w-8/12 border-gray-200 border-b-2 pl-4 pt-2 pb-8" data-testid = "items">
+                <div key={item?.card?.info?.id} className="flex r m-auto w-8/12 border-gray-200 border-b-2 pl-4 pt-2 pb-8" data-testid = "items-cart">
                     <div className="text-sm w-9/12 text-left">
                         <p className="text-[#02060CBF] font-bold text-base">{item?.card?.info?.name}</p>
                         <p className="text-[#3e4152] font-semibold text-sm">₹{(item?.card?.info?.price)?(item?.card?.info?.price/100):(item?.card?.info?.defaultPrice/100)}</p>

@@ -87,10 +87,10 @@ const Body = () => {
 
   //     const json = await data.json();
 
-  //     // setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  //     // setListOfRestCopy(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  //     setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  //     setListOfRestCopy(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   // };
-console.log(listOfRestCopy.length);
+// console.log(listOfRestCopy.length);
   // if(listOfRestCopy.length == 0){
   //     return <Shimmar/>;
   // }
@@ -164,11 +164,11 @@ console.log(listOfRestCopy.length);
         {/* <input className="border border-black px-2" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}></input> */}
       </div>
 
-      <div className="flex m-4 flex-wrap justify-between">
+      <div className="flex flex-wrap m-[1.7rem]">
         {/* <ResCard resName = "Chinese Wok" cuisine="Chinese, Asian, Tibetan, Desserts" ratings = "4.3 ⭐" delTime ="40-45 mins"/>  */}
         {/* above are props they gets passed in as js object only. */}
         {/* <ResCard resName = "Thambbi" cuisine="South Indian, Punjabi, Snacks, Thalis" ratings = "4.5 ⭐" delTime ="20-25 mins"/> */}
-          {/* {console.log(listOfRestCopy)} */}
+          {console.log(listOfRestCopy)}
           {listOfRestCopy.map((resturants) => (
           <Link
             to={"restaurants/" + resturants.info.id}

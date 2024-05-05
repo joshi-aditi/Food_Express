@@ -6,14 +6,22 @@ import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom"
 
 //WILL MOCK THE FETCH FUNCTION HERE : using jest.fn will mock the function which takes a callback function inside this will simulate the fetch function....
-global.fetch = jest.fn(()=>{
+// global.fetch = jest.fn(()=>{
     //1. fetch returns a promise : so will return promise resolve
     /*we will mock the fetch function... using jest.fn() and it takes a callback function and now here i will mock exactly how my fetch function works...fetch function returns promise so i will also have to return promise from this function which will be like object and on that object we call the json() method so this fetch function resolves with a json  and this json is again a function that returns a promise and that resolves actually has the data. 
 
     Fetch returns as a promise of datastrem and then we convert that into json which again returns a promise which is a data....
     */
+//     return Promise.resolve({
+//         json : ()=> Promise.resolve(MOCK_DATA)
+//     })
+// })
+
+global.fetch = jest.fn(()=>{
     return Promise.resolve({
-        json : ()=> Promise.resolve(MOCK_DATA)
+        json : ()=>{
+            return Promise.resolve(MOCK_DATA);
+        }
     })
 })
 
@@ -53,7 +61,7 @@ it("Should render body component with search button", async()=>{
 
 }),
 
-it("Should render body component and return exact top rated res having start>4.4",async ()=>{
+it("Should render body component and return exact top rated res having star>4.4",async ()=>{
     await act(async ()=> render(
         <BrowserRouter>
         <Body/>

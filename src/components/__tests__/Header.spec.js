@@ -31,7 +31,6 @@ it("Should render header component with login btn",()=>{
     expect(logoutBtn).toBeInTheDocument();
 })
 
-
 it("Should render header component with Cart - (0 Items)", () => {
   render(
     <BrowserRouter>

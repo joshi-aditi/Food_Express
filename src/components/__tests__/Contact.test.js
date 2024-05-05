@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 //heading testing :
 it("should load contact us page",()=>{
-    //render
+    //render RQA : render, query, assertion....
     render(<Contact/>);
 
     //query
